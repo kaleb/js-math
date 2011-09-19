@@ -1,6 +1,7 @@
 if (typeof module !== "undefined" && module !== null) {
   module.exports && (module.exports = Math);
 }
+
 /**
 @return wheter a Number x, has the same sign as another Number, y.
 @example
@@ -17,6 +18,7 @@ if (typeof module !== "undefined" && module !== null) {
 Math.samesign = function(x, y) {
   return (x >= 0) !== (y < 0);
 };
+
 /**
 @return {Number} a copy of Number x with the same sign of Number y.
 @example
@@ -37,6 +39,7 @@ Math.copysign = function(x, y) {
     return -x;
   }
 };
+
 /**
 @return {Number} sum of two Numbers.
 @example
@@ -49,6 +52,7 @@ Math.copysign = function(x, y) {
 Math.add = function(a, b) {
   return (+a) + (+b);
 };
+
 /**
 @return {Number} sum of an Array of Numbers.
 @example
@@ -58,6 +62,7 @@ Math.add = function(a, b) {
 Math.sum = function(nums) {
   return nums.reduce(Math.add);
 };
+
 /**
 @return {Number} product of two Numbers.
 @example
@@ -67,6 +72,7 @@ Math.sum = function(nums) {
 Math.mul = function(a, b) {
   return a * b;
 };
+
 /**
 @return {Number} product of an Array of Numbers.
 @example
@@ -76,6 +82,7 @@ Math.mul = function(a, b) {
 Math.prod = function(nums) {
   return nums.reduce(Math.mul);
 };
+
 /**
 @return {Number} factorial of a Number.
 @example
@@ -107,6 +114,7 @@ Math.factorial = function(n) {
     }).apply(this, arguments));
   }
 };
+
 /**
 Greatest Common Multipler
 @return {Number} greatest common multipler of two Numbers.
@@ -124,6 +132,7 @@ Math.gcd = function(a, b) {
   }
   return a;
 };
+
 /**
 Least Common Multiplier
 @return {Number} least common multiplier of two numbers.
