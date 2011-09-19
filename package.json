@@ -12,5 +12,6 @@
     "node": "> 0.0.0"
   },
   "dependencies": {},
-  "devDependencies": {}
+  "devDependencies": {},
+  "homepage": "kaleb.hornsby.ws/js-math"
 }
