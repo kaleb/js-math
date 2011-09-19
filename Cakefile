@@ -2,7 +2,7 @@
 path = require 'path'
 file = 'math'
 task 'build', 'Build the coffee', (options) ->
-    exec "coffee --compile #{file}.coffee", (error, stdout, stderr) ->
+    exec "coffee --bare --compile #{file}.coffee", (error, stdout, stderr) ->
         if error
             console.log "JS build failed."
         else
