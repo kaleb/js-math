@@ -1,17 +1,28 @@
-{exec} = require 'child_process'
-path   = require 'path'
+{exec, spawn} = require 'child_process'
+path = require 'path'
 
-path.exists '.git', (a, b, c) -> console.log a, b, c
+repo = 'git' # or 'hg
+
+getVersion = -> spawn 'npm', ['--version'], (err, stdout, stderr) ->
+    [err, stdout, stderr]
 
 task 'edit', 'Edit the Cakefile', (options) ->
     console.log 'Not implemented', options
 
-option '-f', '--foo', 'bar'
+task 'version', 'Display the package version.', (options) ->
+    exec 'npm --version', (error, stdout, stderr) ->
+        version = stdout.split('.')
+        console.log version[2]
 
-task 'ci'
+task 'ci', 'commit', (options) ->
+    console.dir(options)
+    exec "#{repo} commit", (error, stdout, stderr) ->
+        console.log stdout
 
-task 'co'
+task 'co', 
 
 task 'push'
 
 task 'pull'
+
+option '-m', '--message', 'Message'
