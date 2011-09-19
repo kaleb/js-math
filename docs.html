@@ -1,0 +1,313 @@
+<html>
+	<head>
+		<title>math</title>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+		<style>body {
+    margin: 0;
+    padding: 0;
+    font: 14px/1.5 'Palatino Linotype', 'Book Antiqua', Palatino, FreeSerif, serif;
+    color: #252519;
+}
+a {
+    color: #252519;
+}
+a:hover {
+    text-decoration: underline;
+    color: #19469D;
+}
+p {
+    margin: 12px 0;
+}
+h1, h2, h3 {
+    margin: 0;
+    padding: 0;
+}
+table#source {
+    width: 100%;
+    border-collapse: collapse;
+}
+table#source td:first-child {
+    padding: 30px 40px 30px 40px;
+    vertical-align: top;
+}
+table#source td:first-child,
+table#source td:first-child pre {
+    width: 450px;
+}
+table#source td:last-child {
+    padding: 30px 0 30px 40px;
+    border-left: 1px solid #E5E5EE;
+    background: #F5F5FF;
+}
+table#source tr {
+    border-bottom: 1px solid #E5E5EE;
+}
+table#source tr.filename {
+    padding-top: 40px;
+    border-top: 1px solid #E5E5EE;
+}
+table#source tr.filename td:first-child {
+    text-transform: capitalize;
+}
+table#source tr.filename td:last-child {
+    font-size: 12px;
+}
+table#source tr.filename h2 {
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+}
+table#source tr.code h1,
+table#source tr.code h2,
+table#source tr.code h3 {
+    margin-top: 30px;
+    font-family: "Lucida Grande", "Helvetica Nueue", Arial, sans-serif;
+    font-size: 18px;
+}
+table#source tr.code h2 {
+    font-size: 16px;
+}
+table#source tr.code h3 {
+    font-size: 14px;
+}
+table#source tr.code ul {
+    margin: 15px 0 15px 35px;
+    padding: 0;
+}
+table#source tr.code ul li {
+    margin: 0;
+    padding: 1px 0;
+}
+table#source tr.code ul li p {
+    margin: 0;
+    padding: 0;
+}
+table#source tr.code td:first-child pre {
+    padding: 20px;
+}
+#ribbon {
+    position: fixed;
+    top: 0;
+    right: 0;
+}
+code .string { color: #219161; }
+code .regexp { color: #219161; }
+code .keyword { color: #954121; }
+code .number { color: #19469D; }
+code .comment { color: #bbb; }
+code .this { color: #19469D; }</style>
+		<script>
+			$(function(){
+				$('tr.code').hide();
+				$('tr.filename').toggle(function(){
+					$(this).nextUntil('.filename').fadeIn();
+				}, function(){
+					$(this).nextUntil('.filename').fadeOut();
+				});
+			});
+		</script>
+	</head>
+	<body>
+<table id="source"><tbody><tr><td><h1>math</h1></td><td></td></tr><tr class="filename"><td><h2 id="math.js"><a href="#">math</a></h2></td><td>math.js</td></tr><tr class="code">
+<td class="docs">
+<p>(function() {
+  if (typeof module !== "undefined" &amp;&amp; module !== null) {
+    module.exports &amp;&amp; (module.exports = Math);
+  }</p>
+</td>
+<td class="code">
+<pre><code>*
+   * @<span class="keyword">return</span> <span class="variable">wheter</span> <span class="variable">a</span> <span class="class">Number</span> <span class="variable">x</span>, <span class="variable">has</span> <span class="variable">the</span> <span class="variable">same</span> <span class="variable">sign</span> <span class="variable">as</span> <span class="variable">another</span> <span class="class">Number</span>, <span class="variable">y</span>.
+   * @<span class="variable">example</span>
+   * <span class="class">Math</span>.<span class="variable">samesign</span>(<span class="number integer">1</span>,<span class="number integer">2</span>)
+   * <span class="comment">//-&gt; true</span>
+   * <span class="class">Math</span>.<span class="variable">samesign</span>(-<span class="number integer">3</span>, <span class="number integer">4</span>)
+   * <span class="comment">//-&gt; false</span>
+   * @<span class="variable">test</span>
+   * <span class="class">Math</span>.<span class="variable">samesign</span>(<span class="number integer">5</span>, <span class="number integer">6</span>)
+   * <span class="comment">//-&gt; false</span>
+   * <span class="class">Math</span>.<span class="variable">samesign</span>(-<span class="number integer">7</span>, -<span class="number integer">8</span>)
+   * <span class="comment">//-&gt; true</span>
+   </code></pre>
+</td>
+</tr>
+<tr class="code">
+<td class="docs">
+<p>Math.samesign = function(x, y) {
+    return (x &gt;= 0) !== (y &lt; 0);
+  };</p>
+</td>
+<td class="code">
+<pre><code>*
+   * @<span class="keyword">return</span> {<span class="class">Number</span>} <span class="variable">a</span> <span class="variable">copy</span> <span class="variable">of</span> <span class="class">Number</span> <span class="variable">x</span> <span class="keyword">with</span> <span class="variable">the</span> <span class="variable">same</span> <span class="variable">sign</span> <span class="variable">of</span> <span class="class">Number</span> <span class="variable">y</span>.
+   * @<span class="variable">example</span>
+   * <span class="class">Math</span>.<span class="variable">copysign</span>(<span class="number integer">1</span>, -<span class="number integer">2</span>)
+   * <span class="comment">//-&gt; -1</span>
+   * @<span class="variable">test</span>
+   * <span class="class">Math</span>.<span class="variable">copysign</span>(-<span class="number integer">3</span>, <span class="number integer">4</span>)
+   * <span class="comment">//-&gt; 3</span>
+   * <span class="class">Math</span>.<span class="variable">copysign</span>(<span class="number integer">5</span>, <span class="number integer">6</span>)
+   * <span class="comment">//-&gt; 5</span>
+   * <span class="class">Math</span>.<span class="variable">copysign</span>(-<span class="number integer">7</span>, -<span class="number integer">8</span>)
+   * <span class="comment">//-&gt; -7</span>
+   </code></pre>
+</td>
+</tr>
+<tr class="code">
+<td class="docs">
+<p>Math.copysign = function(x, y) {
+    if (Math.samesign(x, y)) {
+      return x;
+    } else {
+      return -x;
+    }
+  };</p>
+</td>
+<td class="code">
+<pre><code>*
+   * @<span class="keyword">return</span> {<span class="class">Number</span>} <span class="variable">sum</span> <span class="variable">of</span> <span class="variable">two</span> <span class="class">Numbers</span>.
+   * @<span class="variable">example</span>
+   * <span class="class">Math</span>.<span class="variable">add</span>(<span class="number integer">1</span>, <span class="number integer">2</span>)
+   * <span class="comment">//-&gt; 3</span>
+   * @<span class="variable">test</span>
+   * <span class="class">Math</span>.<span class="variable">add</span>(<span class="string">'three'</span>, <span class="number integer">4</span>)
+   * <span class="comment">//-&gt; NaN</span>
+   </code></pre>
+</td>
+</tr>
+<tr class="code">
+<td class="docs">
+<p>Math.add = function(a, b) {
+    return (+a) + (+b);
+  };</p>
+</td>
+<td class="code">
+<pre><code>*
+   * @<span class="keyword">return</span> {<span class="class">Number</span>} <span class="variable">sum</span> <span class="variable">of</span> <span class="variable">an</span> <span class="class">Array</span> <span class="variable">of</span> <span class="class">Numbers</span>.
+   * @<span class="variable">example</span>
+   * <span class="class">Math</span>.<span class="variable">sum</span>([<span class="number integer">1</span>, <span class="number integer">2</span>, <span class="number integer">3</span>])
+   * <span class="comment">//-&gt; 6</span>
+   </code></pre>
+</td>
+</tr>
+<tr class="code">
+<td class="docs">
+<p>Math.sum = function(nums) {
+    return nums.reduce(Math.add);
+  };</p>
+</td>
+<td class="code">
+<pre><code>*
+   * @<span class="keyword">return</span> {<span class="class">Number</span>} <span class="variable">product</span> <span class="variable">of</span> <span class="variable">two</span> <span class="class">Numbers</span>.
+   * @<span class="variable">example</span>
+   * <span class="class">Math</span>.(<span class="number integer">2</span>, <span class="number integer">3</span>)
+   * <span class="comment">//-&gt; 6</span>
+   </code></pre>
+</td>
+</tr>
+<tr class="code">
+<td class="docs">
+<p>Math.mul = function(a, b) {
+    return a * b;
+  };</p>
+</td>
+<td class="code">
+<pre><code>*
+   * @<span class="keyword">return</span> {<span class="class">Number</span>} <span class="variable">product</span> <span class="variable">of</span> <span class="variable">an</span> <span class="class">Array</span> <span class="variable">of</span> <span class="class">Numbers</span>.
+   * @<span class="variable">example</span>
+   * <span class="class">Math</span>.<span class="variable">prod</span>(<span class="number integer">2</span>, <span class="number integer">3</span>, <span class="number integer">4</span>)
+   * <span class="comment">//-&gt; 24</span>
+   </code></pre>
+</td>
+</tr>
+<tr class="code">
+<td class="docs">
+<p>Math.prod = function(nums) {
+    return nums.reduce(Math.mul);
+  };</p>
+</td>
+<td class="code">
+<pre><code>*
+   * @<span class="keyword">return</span> {<span class="class">Number</span>} <span class="variable">factorial</span> <span class="variable">of</span> <span class="variable">a</span> <span class="class">Number</span>.
+   * @<span class="variable">example</span>
+   * <span class="class">Math</span>.<span class="variable">factorial</span>(<span class="number integer">4</span>)
+   * <span class="comment">//-&gt; 24</span>
+   * @<span class="variable">test</span>
+   * <span class="class">Math</span>.<span class="variable">factorial</span>(<span class="number integer">3</span>)
+   * <span class="comment">//-&gt; 6</span>
+   * <span class="class">Math</span>.<span class="variable">factorial</span>(<span class="number integer">2</span>)
+   * <span class="comment">//-&gt; 2</span>
+   * <span class="class">Math</span>.<span class="variable">factorial</span>(<span class="number integer">1</span>)
+   * <span class="comment">//-&gt; 1</span>
+   * <span class="class">Math</span>.<span class="variable">factorial</span>(<span class="number integer">0</span>)
+   * <span class="comment">//-&gt; 1</span>
+   * <span class="class">Math</span>.<span class="variable">factorial</span>(-<span class="number integer">1</span>)
+   * <span class="comment">//-&gt; Infinity</span>
+   </code></pre>
+</td>
+</tr>
+<tr class="code">
+<td class="docs">
+<p>Math.factorial = function(n) {
+    var <em>i, </em>results;
+    if (n &lt; 0) {
+      return Infinity;
+    } else if (n === 0) {
+      return 1;
+    } else {
+      return Math.prod.apply(null, (function() {
+        <em>results = [];
+        for (var </em>i = 1; 1 &lt;= n ? <em>i &lt;= n : </em>i &gt;= n; 1 &lt;= n ? <em>i++ : </em>i--){ <em>results.push(</em>i); }
+        return _results;
+      }).apply(this, arguments));
+    }
+  };</p>
+</td>
+<td class="code">
+<pre><code>*
+   * <span class="class">Greatest</span> <span class="class">Common</span> <span class="class">Multipler</span>
+   * @<span class="keyword">return</span> {<span class="class">Number</span>} <span class="variable">greatest</span> <span class="variable">common</span> <span class="variable">multipler</span> <span class="variable">of</span> <span class="variable">two</span> <span class="class">Numbers</span>.
+   * @<span class="variable">example</span>
+   * <span class="class">Math</span>.<span class="variable">gcd</span>(<span class="number integer">493</span>, <span class="number integer">289</span>)
+   * <span class="comment">//-&gt; 17</span>
+   * @<span class="variable">test</span>
+   * <span class="class">Math</span>.<span class="variable">gcd</span>(<span class="number integer">493</span>, -<span class="number integer">289</span>)
+   * <span class="comment">//-&gt; 17</span>
+   </code></pre>
+</td>
+</tr>
+<tr class="code">
+<td class="docs">
+<p>Math.gcd = function(a, b) {
+    var <em>ref;
+    while (b) {
+      </em>ref = [b, a % b], a = <em>ref[0], b = </em>ref[1];
+    }
+    return a;
+  };</p>
+</td>
+<td class="code">
+<pre><code>*
+   * <span class="class">Least</span> <span class="class">Common</span> <span class="class">Multiplier</span>
+   * @<span class="keyword">return</span> {<span class="class">Number</span>} <span class="variable">least</span> <span class="variable">common</span> <span class="variable">multiplier</span> <span class="variable">of</span> <span class="variable">two</span> <span class="variable">numbers</span>.
+   * @<span class="variable">example</span>
+   * <span class="class">Math</span>.<span class="variable">lcm</span>(<span class="number integer">4</span>, <span class="number integer">12</span>)
+   * <span class="comment">//-&gt; 12</span>
+   * @<span class="variable">test</span>
+   * <span class="class">Math</span>.<span class="variable">lcm</span>(<span class="number integer">6</span>, <span class="number integer">7</span>)
+   * <span class="comment">//-&gt; 42</span>
+   </code></pre>
+</td>
+</tr>
+<tr class="code">
+<td class="docs">
+<p>Math.lcm = function(a, b) {
+    return a / Math.gcd(a, b) * b;
+  };
+}).call(this);</p>
+</td>
+<td class="code">
+
+</td>
+</tr>	</body>
+</html></tbody></table>
