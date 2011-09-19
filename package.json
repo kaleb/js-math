@@ -2,7 +2,7 @@
   "author": "Kaleb Hornsby <kaleb@hornsby.ws> (kaleb.hornsby.ws)",
   "name": "math",
   "description": "Mathematical Functions",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "repository": {
     "type": "git",
     "url": "git://github.com/kaleb/js-math.git"
@@ -13,5 +13,8 @@
   },
   "dependencies": {},
   "devDependencies": {},
-  "homepage": "kaleb.hornsby.ws/js-math"
+  "homepage": "kaleb.hornsby.ws/js-math",
+  "contributors": [
+    "Kaleb Hornsby <kaleb@hornsby.ws> (kaleb.hornsby.ws)"
+  ]
 }
